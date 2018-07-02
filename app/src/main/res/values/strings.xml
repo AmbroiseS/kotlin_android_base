@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Jcdecaux_training</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="api_key">75b5216269082cf3b3711d0780d96262b4d0ac3b</string>
+    <string name="emplacements">Emplacements</string>
+    <string name="let_s_go">Let\'s go</string>
+    <string name="available_bike_stands">Bike Stands available</string>
+    <string name="bikes_available">Bikes available</string>
+</resources>

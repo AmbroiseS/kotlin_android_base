@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.training.jcdecaux.jcdecaux_training"
+        minSdkVersion 22
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "JCDECAUX_API_URL", '"https://api.jcdecaux.com/vls/v1/"'
+
+        }
+        debug {
+            buildConfigField "String", "JCDECAUX_API_URL", '"https://api.jcdecaux.com/vls/v1/"'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.google.code.gson:gson:2.8.0'
+
+    //permissions dispatcher
+    implementation("com.github.hotchemi:permissionsdispatcher:3.3.1") {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:3.3.1"
+
+    //RX
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+
+    // network
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "com.squareup.okhttp3:okhttp:3.9.1"
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+
+    // Dependency injection
+    implementation "com.google.dagger:dagger:2.16"
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+}
